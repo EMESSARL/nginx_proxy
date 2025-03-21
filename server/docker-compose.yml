@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   web:
-    image: httpd:latest
-    container_name: apache_server
+    image: php:apache
+    container_name: php_apache_server
     volumes:
-      - ./html:/usr/local/apache2/htdocs/
+      - .:/var/www/html/
     ports:
       - "7000:80"
