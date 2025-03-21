@@ -1,0 +1,37 @@
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'     # Port HTTP public
+      - '443:443'   # Port HTTPS public
+      - '81:81'     # Port d'administration
+    environment:
+      DB_POSTGRES_HOST: 'db'               # Nom d'hôte de la base de données
+      DB_POSTGRES_PORT: '5432'              # Port de la base de données
+      DB_POSTGRES_USER: 'emes_proxy'        # Utilisateur de la base de données
+      DB_POSTGRES_PASSWORD: 'em@s@prox!'     # Mot de passe de la base de données
+      DB_POSTGRES_NAME: 'emes_proxy'        # Nom de la base de données
+    volumes:
+      - ./data:/data                        # Volume pour les données de l'application
+      - ./letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
+    depends_on:
+      - db                                   # Dépend de la base de données
+    networks:
+      - emes                                 # Réseau utilisé
+
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: 'emes_proxy'           # Utilisateur de la base de données
+      POSTGRES_PASSWORD: 'em@s@prox!'        # Mot de passe de la base de données
+      POSTGRES_DB: 'emes_proxy'              # Nom de la base de données
+    volumes:
+      - ./postgres:/var/lib/postgresql/data  # Volume pour stocker les données de PostgreSQL
+    networks: 
+      - emes                                 # Réseau utilisé
+
+networks:
+  emes:
+    driver: bridge 
