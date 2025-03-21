@@ -11,6 +11,7 @@ if ! command -v docker-compose &> /dev/null; then
     exit 1
 fi
 cd ./server
+pwd
 # Démarre le serveur avec Docker Compose en mode détaché
 echo "Démarrage du serveur Flask en mode détaché..."
 
@@ -19,5 +20,6 @@ docker-compose down -v
 docker-compose up -d
 
 cd ~
+pwd
 # Optionnel : Affiche les logs du conteneur
 echo "Pour voir les logs, exécutez : docker-compose logs -f"
