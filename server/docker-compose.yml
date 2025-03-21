@@ -1,6 +1,6 @@
 services:
   web:
-    build: ./app
+    build: .
     container_name: flask_server
     ports:
       - "7000:7000"
