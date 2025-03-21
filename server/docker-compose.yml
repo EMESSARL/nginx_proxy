@@ -1,6 +1,10 @@
+version: '3.8'
+
 services:
   web:
-    build: .
-    container_name: flask_server
+    image: httpd:latest
+    container_name: apache_server
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
     ports:
-      - "7000:7000"
+      - "7000:80"
