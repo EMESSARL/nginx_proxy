@@ -14,8 +14,6 @@ cd ./server
 # Démarre le serveur avec Docker Compose en mode détaché
 echo "Démarrage du serveur Flask en mode détaché..."
 
-
-
 docker-compose up -d
 
 cd ~
