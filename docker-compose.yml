@@ -35,7 +35,7 @@ services:
       
   web:
     image: php:apache
-    container_name: php_apache_server
+    container_name: php_apache_test_server
     volumes:
       - ./html:/var/www/html/
     ports:
@@ -46,7 +46,7 @@ services:
 
   api:
     image: php:apache
-    container_name: php_api_server
+    container_name: php_api_test_server
     volumes:
       - ./api:/var/www/html/
     ports:
