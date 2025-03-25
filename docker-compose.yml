@@ -1,5 +1,5 @@
 services:
-  app:
+  proxy_manager:
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
     ports:
@@ -7,20 +7,20 @@ services:
       - '443:443'   # Port HTTPS public
       - '81:81'     # Port d'administration
     environment:
-      DB_POSTGRES_HOST: 'db'               # Nom d'hôte de la base de données
+      DB_POSTGRES_HOST: 'proxy_manager_db'               # Nom d'hôte de la base de données
       DB_POSTGRES_PORT: '5432'              # Port de la base de données
       DB_POSTGRES_USER: 'emes_proxy'        # Utilisateur de la base de données
       DB_POSTGRES_PASSWORD: 'em@s@prox!'     # Mot de passe de la base de données
       DB_POSTGRES_NAME: 'emes_proxy'        # Nom de la base de données
     volumes:
-      - ./data:/data                        # Volume pour les données de l'application
-      - ./letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
+      - ./proxy_data/data:/data                        # Volume pour les données de l'application
+      - ./proxy_data/letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
     depends_on:
-      - db                                   # Dépend de la base de données
+      - proxy_manager_db                                   # Dépend de la base de données
     networks:
       - emes                                 # Réseau utilisé
 
-  db:
+  proxy_manager_db:
     image: postgres:latest
     restart: unless-stopped
     environment:
@@ -36,7 +36,7 @@ services:
   web_server_test_1:
     image: php:apache
     volumes:
-      - ./html:/var/www/html/
+      - ./web_test/test1:/var/www/html/
     ports:
       - "39080:80"
     networks: 
@@ -46,7 +46,7 @@ services:
   web_server_test_2:
     image: php:apache
     volumes:
-      - ./api:/var/www/html/
+      - ./web_test/test2:/var/www/html/
     ports:
       - "39090:80"   
     networks: 
