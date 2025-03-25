@@ -7,9 +7,9 @@ error_exit() {
 }
 
 # Vérification et création des dossiers nécessaires
-DATA_DIR="./proxy_data/data"
-LETSENCRYPT_DIR="./proxy_data/letsencrypt"
-POSTGRES_DIR="./proxy_data/postgres"
+DATA_DIR="./proxy_data"
+LETSENCRYPT_DIR="./letsencrypt"
+POSTGRES_DIR="./postgres"
 
 if [ ! -d "$DATA_DIR" ]; then
     echo "Création du dossier $DATA_DIR..."

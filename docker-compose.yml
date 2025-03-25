@@ -13,8 +13,8 @@ services:
       DB_POSTGRES_PASSWORD: 'em@s@prox!'     # Mot de passe de la base de données
       DB_POSTGRES_NAME: 'emes_proxy'        # Nom de la base de données
     volumes:
-      - ./proxy_data/data:/data                        # Volume pour les données de l'application
-      - ./proxy_data/letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
+      - ./proxy_data:/data                        # Volume pour les données de l'application
+      - ./letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
     depends_on:
       - proxy_manager_db                                   # Dépend de la base de données
     networks:
