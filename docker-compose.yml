@@ -30,7 +30,29 @@ services:
     volumes:
       - ./postgres:/var/lib/postgresql/data  # Volume pour stocker les données de PostgreSQL
     networks: 
-      - emes                                 # Réseau utilisé
+      - emes     
+      
+      
+  web:
+    image: php:apache
+    container_name: php_apache_server
+    volumes:
+      - ./html:/var/www/html/
+    ports:
+      - "39080:80"
+    networks: 
+      - emes   
+
+
+  api:
+    image: php:apache
+    container_name: php_api_server
+    volumes:
+      - ./api:/var/www/html/
+    ports:
+      - "39090:80"   
+    networks: 
+      - emes                  # Réseau utilisé
 
 networks:
   emes:
