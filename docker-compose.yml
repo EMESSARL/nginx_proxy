@@ -33,9 +33,8 @@ services:
       - emes     
       
       
-  web:
+  web_server_test_1:
     image: php:apache
-    container_name: php_apache_test_server
     volumes:
       - ./html:/var/www/html/
     ports:
@@ -44,9 +43,8 @@ services:
       - emes   
 
 
-  api:
+  web_server_test_2:
     image: php:apache
-    container_name: php_api_test_server
     volumes:
       - ./api:/var/www/html/
     ports:
