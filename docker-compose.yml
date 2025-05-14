@@ -15,6 +15,16 @@ services:
     volumes:
       - ${PROXY_DATA_PATH}:/data                                 # Volume pour les données de l'application
       - ${LETSENCRYPT_PATH}:/etc/letsencrypt                    # Volume pour les certificats Let's Encrypt
+      - ./htpasswd/.htpasswd_v1:/etc/nginx/.htpasswd_v1
+      - ./htpasswd/.htpasswd_v2:/etc/nginx/.htpasswd_v2
+      - ./htpasswd/.htpasswd_v3:/etc/nginx/.htpasswd_v3
+      - ./htpasswd/.htpasswd_v4:/etc/nginx/.htpasswd_v4
+      - ./htpasswd/.htpasswd_v5:/etc/nginx/.htpasswd_v5
+      - ./htpasswd/.htpasswd_v6:/etc/nginx/.htpasswd_v6
+      - ./htpasswd/.htpasswd_v7:/etc/nginx/.htpasswd_v7
+      - ./htpasswd/.htpasswd_v8:/etc/nginx/.htpasswd_v8
+      - ./htpasswd/.htpasswd_v9:/etc/nginx/.htpasswd_v9
+      - ./htpasswd/.htpasswd_v10:/etc/nginx/.htpasswd_v10
     depends_on:
       - proxy_manager_db                                           # Dépend de la base de données
     networks:
