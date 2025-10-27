@@ -28,10 +28,9 @@ services:
       POSTGRES_PASSWORD: 'sise5@s@prox!'        # Mot de passe de la base de données
       POSTGRES_DB: 'siseb_proxy_proxy'              # Nom de la base de données
     volumes:
-      - ./postgres:/var/lib/postgresql  # Volume pour stocker les données de PostgreSQL
+      - ./postgres:/var/lib/postgresql              # Volume pour stocker les données de PostgreSQL
     networks: 
       - siseb_proxy     
-      
       
   web_server_test_1:
     image: php:apache
@@ -41,7 +40,6 @@ services:
       - "39080:80"
     networks: 
       - siseb_proxy   
-
 
   web_server_test_2:
     image: php:apache
@@ -54,5 +52,4 @@ services:
 
 networks:
   siseb_proxy:
-    driver: bridge                 # Volume pour les certificats Let's Encrypt
-      
+    driver: bridge                 # Réseau utilisé
