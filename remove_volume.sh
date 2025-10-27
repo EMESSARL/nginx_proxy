@@ -8,7 +8,7 @@ error_exit() {
 
 # Suppression des conteneurs et des réseaux Docker
 echo "Arrêt des services Docker..."
-docker-compose down || error_exit "Erreur lors de l'arrêt des services."
+docker compose down || error_exit "Erreur lors de l'arrêt des services."
 
 # Suppression des dossiers
 DATA_DIR="./proxy_data/data"
