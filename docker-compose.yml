@@ -28,7 +28,7 @@ services:
       POSTGRES_PASSWORD: 'sise5@s@prox!'        # Mot de passe de la base de données
       POSTGRES_DB: 'siseb_proxy_proxy'              # Nom de la base de données
     volumes:
-      - ./postgres:/var/lib/postgresql/data  # Volume pour stocker les données de PostgreSQL
+      - ./postgres:/var/lib/postgresql  # Volume pour stocker les données de PostgreSQL
     networks: 
       - siseb_proxy     
       
