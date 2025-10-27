@@ -10,7 +10,7 @@ services:
       DB_POSTGRES_HOST: 'proxy_manager_db'               # Nom d'hôte de la base de données
       DB_POSTGRES_PORT: '5432'              # Port de la base de données
       DB_POSTGRES_USER: 'siseb_proxy_proxy'        # Utilisateur de la base de données
-      DB_POSTGRES_PASSWORD: 'em@s@prox!'     # Mot de passe de la base de données
+      DB_POSTGRES_PASSWORD: 'sise5@s@prox!'     # Mot de passe de la base de données
       DB_POSTGRES_NAME: 'siseb_proxy_proxy'        # Nom de la base de données
     volumes:
       - ./proxy_data:/data                        # Volume pour les données de l'application
