@@ -9,28 +9,28 @@ services:
     environment:
       DB_POSTGRES_HOST: 'proxy_manager_db'               # Nom d'hôte de la base de données
       DB_POSTGRES_PORT: '5432'              # Port de la base de données
-      DB_POSTGRES_USER: 'siseb_proxy'        # Utilisateur de la base de données
+      DB_POSTGRES_USER: 'siseb_proxy_proxy'        # Utilisateur de la base de données
       DB_POSTGRES_PASSWORD: 'em@s@prox!'     # Mot de passe de la base de données
-      DB_POSTGRES_NAME: 'siseb_proxy'        # Nom de la base de données
+      DB_POSTGRES_NAME: 'siseb_proxy_proxy'        # Nom de la base de données
     volumes:
       - ./proxy_data:/data                        # Volume pour les données de l'application
       - ./letsencrypt:/etc/letsencrypt      # Volume pour les certificats Let's Encrypt
     depends_on:
       - proxy_manager_db                                   # Dépend de la base de données
     networks:
-      - siseb                                 # Réseau utilisé
+      - siseb_proxy                                 # Réseau utilisé
 
   proxy_manager_db:
     image: postgres:latest
     restart: unless-stopped
     environment:
-      POSTGRES_USER: 'siseb_proxy'           # Utilisateur de la base de données
+      POSTGRES_USER: 'siseb_proxy_proxy'           # Utilisateur de la base de données
       POSTGRES_PASSWORD: 'sise5@s@prox!'        # Mot de passe de la base de données
-      POSTGRES_DB: 'siseb_proxy'              # Nom de la base de données
+      POSTGRES_DB: 'siseb_proxy_proxy'              # Nom de la base de données
     volumes:
       - ./postgres:/var/lib/postgresql/data  # Volume pour stocker les données de PostgreSQL
     networks: 
-      - siseb     
+      - siseb_proxy     
       
       
   web_server_test_1:
@@ -40,7 +40,7 @@ services:
     ports:
       - "39080:80"
     networks: 
-      - siseb   
+      - siseb_proxy   
 
 
   web_server_test_2:
@@ -50,9 +50,9 @@ services:
     ports:
       - "39090:80"   
     networks: 
-      - siseb                  # Réseau utilisé
+      - siseb_proxy                  # Réseau utilisé
 
 networks:
-  siseb:
+  siseb_proxy:
     driver: bridge                 # Volume pour les certificats Let's Encrypt
       
