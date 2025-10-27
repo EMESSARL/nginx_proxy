@@ -28,7 +28,7 @@ services:
     depends_on:
       - proxy_manager_db                                           # Dépend de la base de données
     networks:
-      - emes                                                      # Réseau utilisé
+      - siseb_proxy                                                      # Réseau utilisé
 
   proxy_manager_db:
     image: bitnami/postgresql
@@ -40,8 +40,8 @@ services:
     volumes:
       - ${POSTGRES_DATA_PATH}:/var/lib/postgresql/data            # Volume pour stocker les données de PostgreSQL
     networks: 
-      - emes                                                      # Réseau utilisé
+      - siseb_proxy                                                      # Réseau utilisé
 
 networks:
-  emes:
+  siseb_proxy:
     driver: bridge
