@@ -43,10 +43,10 @@ fi
 
 # Suppression des conteneurs existants
 echo "Suppression des conteneurs existants..."
-docker-compose down || error_exit "Erreur lors de la suppression des conteneurs."
+docker compose down || error_exit "Erreur lors de la suppression des conteneurs."
 
 # Lancement du service Docker
 echo "Lancement du service Nginx Proxy Manager et PostgreSQL..."
-docker-compose up -d || error_exit "Erreur lors du lancement du service."
+docker compose up -d || error_exit "Erreur lors du lancement du service."
 
 echo "Service Nginx Proxy Manager et PostgreSQL lancé avec succès."
