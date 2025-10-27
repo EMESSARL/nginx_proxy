@@ -31,7 +31,7 @@ services:
       - emes                                                      # Réseau utilisé
 
   proxy_manager_db:
-    image: postgres:latest
+    image: bitnami/postgresql
     restart: unless-stopped
     environment:
       POSTGRES_USER: '${DB_POSTGRES_USER}'                        # Utilisateur de la base de données
