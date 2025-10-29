@@ -11,9 +11,9 @@ echo "Arrêt des services Docker..."
 docker compose down || error_exit "Erreur lors de l'arrêt des services."
 
 # Suppression des dossiers
-DATA_DIR="./proxy_data/data"
-LETSENCRYPT_DIR="./proxy_data/letsencrypt"
-POSTGRES_DIR="./proxy_data/postgres"
+DATA_DIR="./proxy_data"
+LETSENCRYPT_DIR="./letsencrypt"
+POSTGRES_DIR="./postgres"
 
 if [ -d "$DATA_DIR" ]; then
     echo "Suppression du dossier $DATA_DIR..."
