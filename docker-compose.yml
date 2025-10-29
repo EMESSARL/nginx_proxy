@@ -5,7 +5,7 @@ services:
     ports:
       - '80:80'     # Port HTTP public
       - '443:443'   # Port HTTPS public
-      - '81:81'     # Port d'administration
+      - '8081:81'     # ← CHANGÉ ICI
     environment:
       DB_POSTGRES_HOST: 'proxy_manager_db'               # Nom d'hôte de la base de données
       DB_POSTGRES_PORT: '5432'              # Port de la base de données
